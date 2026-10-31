@@ -31,10 +31,11 @@ nix develop github:ryoppippi/dquickts
 ```
 
 The package installs `qjs`, `qjsc`, headers, and `libquickjs.a`. The default app
-runs `qjs`. In a local checkout, `nix flake check` builds the package and runs
+runs `qjs`. Compiling executables with `qjsc` requires a C compiler on PATH;
+use `nix develop` for the toolchain. In a local checkout, `nix flake check` builds the package and runs
 the built-in and suspension/snapshot tests for the current system. The external
 Test262 suite is not downloaded or run by the Nix build. `nix fmt` formats the
-flake. Commit `flake.lock` to keep the nixpkgs dependency reproducible.
+flake.
 
 The CLI includes file and process APIs; this package does not sandbox untrusted
 code. Embedders must control exposed host capabilities and resource limits.
