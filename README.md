@@ -20,27 +20,6 @@ make                 # builds qjs, qjsc and libquickjs.a
 make test-snapshot   # builds and runs the suspension and snapshot test hosts
 ```
 
-## Nix
-
-This fork provides a flake for AArch64 macOS and x86-64/AArch64 Linux:
-
-```sh
-nix run github:ryoppippi/dquickts -- hello.ts
-nix build github:ryoppippi/dquickts
-nix develop github:ryoppippi/dquickts
-```
-
-The package installs `qjs`, `qjsc`, headers, and `libquickjs.a`. The default app
-runs `qjs`. Compiling executables with `qjsc` requires a C compiler on PATH;
-use `nix develop` for the toolchain. In a local checkout, `nix flake check` builds the package and runs
-the built-in and suspension/snapshot tests for the current system. The external
-Test262 suite is not downloaded or run by the Nix build. `nix fmt` formats the
-flake.
-
-The CLI includes file and process APIs; this package does not sandbox untrusted
-code. Embedders must control exposed host capabilities and resource limits.
-Snapshots must come from a trusted source; see [Limitations](#limitations).
-
 ## Contents
 
 - [What this fork adds](#what-this-fork-adds)
